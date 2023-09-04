@@ -1,0 +1,16 @@
+.vs/
+[Dd]ebug/
+[Rr]elease/
+x86/
+x64/
+*.exe
+*.obj
+*.secret
+*.env
+
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+*.vscode/
