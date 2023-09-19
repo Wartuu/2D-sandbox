@@ -8,6 +8,10 @@ x64/
 *.secret
 *.env
 
+*.gif
+*.png
+*.jpg
+
 [Bb]in/
 [Oo]bj/
 [Ll]og/

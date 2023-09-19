@@ -91,7 +91,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)addons\include;$(SolutionDir)addons\include\imgui;$(SolutionDir)addons\include\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)addons\include;$(SolutionDir)addons\include\imgui;$(SolutionDir)addons\include\stb;$(SolutionDir)$(ProjectName)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -111,7 +111,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)addons\include;$(SolutionDir)addons\include\imgui;$(SolutionDir)addons\include\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)addons\include;$(SolutionDir)addons\include\imgui;$(SolutionDir)addons\include\stb;$(SolutionDir)$(ProjectName)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,7 +151,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\render\mesh.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\render\texture.cpp" />
+    <ClCompile Include="src\utils\error.cpp" />
+    <ClCompile Include="src\render\particle.cpp" />
+    <ClCompile Include="src\render\shader.cpp" />
+    <ClCompile Include="src\utils\utils.cpp" />
+    <ClCompile Include="src\core\window.cpp" />
+    <ClCompile Include="_lib\glad.c" />
+    <ClCompile Include="_lib\imgui.cpp" />
+    <ClCompile Include="_lib\imgui_demo.cpp" />
+    <ClCompile Include="_lib\imgui_draw.cpp" />
+    <ClCompile Include="_lib\imgui_impl_glfw.cpp" />
+    <ClCompile Include="_lib\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="_lib\imgui_tables.cpp" />
+    <ClCompile Include="_lib\imgui_widgets.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\core\window.h" />
+    <ClInclude Include="include\render\mesh.h" />
+    <ClInclude Include="include\render\particle.h" />
+    <ClInclude Include="include\render\shader.h" />
+    <ClInclude Include="include\render\texture.h" />
+    <ClInclude Include="include\utils\error.h" />
+    <ClInclude Include="include\utils\utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
