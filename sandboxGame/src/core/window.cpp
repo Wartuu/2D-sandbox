@@ -1,5 +1,34 @@
 #include <core/window.h>
 
+WindowCallbacks* WindowCallbacks::instance = nullptr;
+
+WindowCallbacks* WindowCallbacks::getInstance() {
+	if (instance == nullptr) {
+		instance = new WindowCallbacks();
+	}
+
+	return instance;
+}
+
+void WindowCallbacks::addWindow(Window& window) {
+	GLFWwindow* handle = window.getHandle();
+	windows.insert_or_assign(handle, window);
+
+
+	glfwSetFramebufferSizeCallback(handle, _frameBufferCallback);
+}
+
+void WindowCallbacks::frameBufferCallback(GLFWwindow* window, int width, int height) {
+	windows.find(window)->second.setSize(width, height);
+}
+
+void WindowCallbacks::_frameBufferCallback(GLFWwindow* window, int width, int height) {
+	WindowCallbacks::getInstance()->frameBufferCallback(window, width, height);
+}
+
+
+
+
 Window::Window(int width, int height, const char* title, WindowConfig config) :
 	width(width), height(height), title(title), config(config) {
 
@@ -35,6 +64,11 @@ Window::Window(int width, int height, const char* title, WindowConfig config) :
 
 	glfwSwapInterval(config.vsync);
 	glViewport(0, 0, width, height);
+
+	callbacks = WindowCallbacks::getInstance();
+
+	callbacks->addWindow(*this);
+
 
 	if (config.useImGui == false) {
 		glfwShowWindow(handle);
@@ -86,6 +120,7 @@ void Window::setSize(int width, int height) {
 void Window::setSize(glm::ivec2 size) {
 	this->width = size.x;
 	this->height = size.y;
+
 	glfwSetWindowSize(handle, size.x, size.y);
 	glViewport(0, 0, size.x, size.y);
 }

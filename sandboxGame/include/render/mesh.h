@@ -3,11 +3,6 @@
 
 #pragma once
 
-struct Vertex {
-	float position[3];
-};
-
-
 class Mesh {
 public:
 	Mesh() { vao = 0; vbo = 0; };

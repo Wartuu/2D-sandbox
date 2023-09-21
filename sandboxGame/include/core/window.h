@@ -8,15 +8,37 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
+#include <map>
+
 #pragma once
 
 class WindowCallbacks;
 class Window;
-
 struct WindowConfig;
 
-// TODO;
+
 class WindowCallbacks {
+public:
+	WindowCallbacks(const WindowCallbacks&) = delete;
+	WindowCallbacks& operator=(const WindowCallbacks&) = delete;
+
+	static WindowCallbacks* getInstance();
+
+	void addWindow(Window& window);
+
+
+private:
+	WindowCallbacks() {};
+
+	std::map<GLFWwindow*, Window&> windows;
+
+	void frameBufferCallback(GLFWwindow* window, int width, int height);
+	static void _frameBufferCallback(GLFWwindow* window, int width, int height);
+
+
+	static WindowCallbacks* instance;
+
+
 
 };
 

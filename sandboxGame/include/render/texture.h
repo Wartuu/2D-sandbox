@@ -39,18 +39,3 @@ private:
 	int frameSize;
 	int currentFrame;
 };
-
-class SpriteSheet {
-public:
-	SpriteSheet(const char* filename, int x, int y);
-
-	void bind(int id, int x, int y);
-
-private:
-	unsigned int sheet;
-
-	int sizeX;
-	int sizeY;
-	int offsetX;
-	int offsetY;
-};

@@ -29,5 +29,5 @@ void main() {
     currID = int(gl_InstanceID) % 3;
     currID = int(currID);
 
-    gl_Position = proj * view * model * vec4(aPosF, 1.0);
+    gl_Position = proj * view * model * vec4(aPos, 1.0);
 }

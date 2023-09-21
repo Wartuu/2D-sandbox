@@ -118,34 +118,3 @@ void Texture::loadStatic(const char* filename){
 
 	stbi_image_free(image);
 }
-
-SpriteSheet::SpriteSheet(const char* filename, int x, int y) {
-	sheet = 0;
-
-	this->offsetX = x;
-	this->offsetY = y;
-
-	int comp;
-
-	unsigned char* sheetData = stbi_load(filename, &this->sizeX, &this->sizeY, &comp, 0);
-
-	int format = (comp == 4) ? GL_RGBA : GL_RGB;
-
-	glGenTextures(1, &sheet);
-
-	glBindTexture(GL_TEXTURE_2D, sheet);
-	glTexImage2D(GL_TEXTURE_2D, 0, format, sizeX, sizeY, 0, format, GL_UNSIGNED_BYTE, sheetData);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glGenerateMipmap(GL_TEXTURE_2D);
-
-
-}
-
-void SpriteSheet::bind(int id, int x, int y) {
-	glActiveTexture(GL_TEXTURE0 + id);
-	glBindTexture(GL_TEXTURE_2D, sheet);
-}

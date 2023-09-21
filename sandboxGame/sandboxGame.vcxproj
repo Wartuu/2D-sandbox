@@ -159,6 +159,7 @@
     <ClCompile Include="src\render\shader.cpp" />
     <ClCompile Include="src\utils\utils.cpp" />
     <ClCompile Include="src\core\window.cpp" />
+    <ClCompile Include="src\world\world.cpp" />
     <ClCompile Include="_lib\glad.c" />
     <ClCompile Include="_lib\imgui.cpp" />
     <ClCompile Include="_lib\imgui_demo.cpp" />
@@ -174,8 +175,10 @@
     <ClInclude Include="include\render\particle.h" />
     <ClInclude Include="include\render\shader.h" />
     <ClInclude Include="include\render\texture.h" />
+    <ClInclude Include="include\world\world.h" />
     <ClInclude Include="include\utils\error.h" />
     <ClInclude Include="include\utils\utils.h" />
+    <ClInclude Include="src\input\input.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
